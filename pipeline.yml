@@ -1,0 +1,22 @@
+pipeline:
+ agent: 
+    any:
+ stages:
+  - stage: "stage1"
+    steps:
+     - echo "welcome to stage 1"
+  - stage: "stage2"
+    steps:
+     - echo "welcome to stage 2"
+  - stage: "docker multiarch"
+    parallel:
+        - stage: "x86"
+          agent:
+           label: "x86"
+          steps:
+            - echo "build x86 done"
+        - stage: "arm64"
+          agent:
+           label: "arm64"
+          steps:
+            - echo "build arm64 done"
