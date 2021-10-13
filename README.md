@@ -1,5 +1,7 @@
 # jenkins-multiarch-dotnet
 
- docker build -t aspnetapp .
+```bash
+docker build -t webapp -f Dockerfile.alpine-x64 .
+```
 
- docker run -d -p 8080:80 --name myapp aspnetapp
+ docker run --rm -d -p 8080:80 --name myapp webapp
