@@ -2,9 +2,10 @@ pipeline:
  agent: 
     any:
  stages:
-  - stage: "stage1"
+  - stage: "checkout repo"
     steps:
      - echo "welcome to stage 1"
+     - git branch: 'main', url: 'https://github.com/nadaahm/jenkins-multiarch-dotnet'
   - stage: "stage2"
     steps:
      - echo "welcome to stage 2"
