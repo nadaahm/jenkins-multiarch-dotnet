@@ -16,11 +16,10 @@ pipeline {
                         label "x86"
                     }
                     steps {
-                        sh 'ls'
                         echo 'Cloning repo from GitHub to x86 agent'
                         git branch: 'main', url: 'https://github.com/nadaahm/jenkins-multiarch-dotnet'
                         sh 'ls'
-                        sh 'docker build -t ahmednada/web-app-multiarch:manifest-amd64 --build-arg ARCH=amd64/ -f Dockerfile.alpine-x64 .'
+                        sh 'sudo docker build -t ahmednada/web-app-multiarch:manifest-amd64 --build-arg ARCH=amd64/ -f Dockerfile.x64 .'
                     }
 
                 }
@@ -29,11 +28,10 @@ pipeline {
                         label "arm64"
                     }
                     steps {
-                        sh 'ls'
                         echo 'Cloning repo from GitHub to arm64 agent'
                         git branch: 'main', url: 'https://github.com/nadaahm/jenkins-multiarch-dotnet'
                         sh 'ls'
-                        sh 'docker build -t ahmednada/web-app-multiarch:manifest-arm64v8 --build-arg ARCH=arm64v8/ -f Dockerfile.alpine-arm64 .'
+                        sh 'sudo docker build -t ahmednada/web-app-multiarch:manifest-arm64v8 --build-arg ARCH=arm64v8/ -f Dockerfile.arm64 .'
                     }
 
                 }
